@@ -5,7 +5,7 @@ public class GeneradorTxt {
 		//Letras Ascii 97=a 98=b 99=c ..... 122=z
 		int letini=97;
 		int letfin=100;
-		int npalabras=10;
+		int npalabras=5;
 		int longitudPalabra=5;
 		String[] diccionario=new String[npalabras];
 		for(int i=0;i<npalabras;i++){
@@ -22,6 +22,10 @@ public class GeneradorTxt {
 		}
 		for(String a:diccionario)
 			System.out.println(a);
+		ordenarTexto(diccionario);
+		System.out.println("ORDENADO");
+		for(String a:diccionario)
+			System.out.println(a);
 	}
 	public static boolean estaPalabra(String pal,String[] dic,int j){
 		boolean esta=false;
@@ -31,5 +35,17 @@ public class GeneradorTxt {
 			i++;
 		}		
 		return esta;
+	}
+	public static void ordenarTexto(String[] cadena){
+		for(int i=0;i<cadena.length;i++){
+			String pal=cadena[i];
+			for(int j=i;j<cadena.length;j++)
+				if(cadena[j].compareTo(pal)>0){
+					String aux=pal;
+					pal=aux;
+					cadena[j]=aux;
+				}
+			cadena[i]=pal;
+		}
 	}
 }
