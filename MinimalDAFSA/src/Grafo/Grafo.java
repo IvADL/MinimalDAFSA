@@ -1,47 +1,76 @@
 package Grafo;
 
+import java.util.ArrayList;
+
 public class Grafo {
-	private Nodo raiz;
-    private Nodo fin;
+
+	private Vertice raiz;
+	private Pila<Vertice> pil;
+
 	public Grafo(){
-		raiz=new Nodo();
-		fin=new Nodo();
-		
+		raiz=new Vertice();
+		pil=new Pila<Vertice>();
+
 	}
 	public void addPalabra(String palabra){
-		Nodo aux=raiz;
+		Vertice aux=raiz;
 		int n=palabra.length();
 		char clave;
-       int i=0;
-       while(i<n&&aux.estaArista(clave=palabra.charAt(i))){
-    	   aux=aux.sigNodo(clave);
-    	   i++;
-       }
-       //Falta agregar letras
-       if(i<n){
-    	   String pal=palabra.substring(i);
-    	   completarPalabra(aux,pal);
-    	 }       
-     }
-	//Crea un serie de Nodos para completar la palabra
-	public void completarPalabra(Nodo aux,String pal){	    
-		char array[]=pal.toCharArray();
-		Nodo sig;
 		int i=0;
-		for(;i<array.length-1;i++){
-		    sig=new Nodo();
+		while(i<n&&aux.estaArista(clave=palabra.charAt(i))){
+			aux=aux.sigNodo(clave);
+			i++;
+		}
+		if(i<n){
+		
+		String pal=palabra.substring(i);
+		completarPalabra(aux,pal);		
+		
+		}
+		
+		aux.setEstadoFinal(true);
+		pil.adicPila(aux);
+	}       
+
+	//Crea un serie de Nodos para completar la palabra
+	public void completarPalabra(Vertice aux,String pal){	    
+		char array[]=pal.toCharArray();
+		Vertice sig;
+		
+		for(int i=0;i<array.length;i++){
+			sig=new Vertice();
 			aux.addArista(array[i],sig);
 			aux=sig;
 		}
-		aux.addArista(array[i],fin);		
+						
+	}
+	public  void mostrar(){
+		ArrayList<String>dic=new ArrayList<String>();
+		mostrar(dic,"",raiz);
+		for(String a:dic)
+			System.out.println(a);
+	}
+	public void mostrar(ArrayList<String>a,String pal,Vertice aux){
+		if(aux.estadoFinal)
+			a.add(pal);
+		for(char c:aux.getAristas().keySet())
+			mostrar(a,pal+c,aux.getAristas().get(c));
+
+
 	}
 	public static void main(String []args){
-          
+
 		Grafo a=new Grafo();
 		a.addPalabra("abbba");
 	     a.addPalabra("abcas");
 	     a.addPalabra("aas");
-	    System.out.println(Nodo.val);
+	     a.addPalabra("bbba");
+	    a.mostrar();
+	     System.out.println(Vertice.val);
+	
+		
 
 	}
+
+
 }
