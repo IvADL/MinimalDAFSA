@@ -10,6 +10,7 @@ public class Vertice {
 	private int id;
 
 	private HashMap<Character,Vertice> aristasV;
+	
 	public  HashMap<Vertice,ArrayList<Character>> aristasAnt;
 
 	public Vertice(){
@@ -66,9 +67,11 @@ public class Vertice {
 		return "Vertice "+id;
 	}
 	//Son equivalenste si tienes las mismas clave, las claves dirigen a los mismos Nodos
+	//Y EL MISMO ESTADO 
 	public boolean esEquivalente(Vertice v2){
 		HashMap<Character,Vertice> aristasV2=v2.getAristas();
-		if(aristasV.size()==aristasV2.size()){
+	
+		if(aristasV.size()==aristasV2.size()&&isEstadoFinal()==v2.isEstadoFinal()){
 			for(char c:aristasV.keySet())
 				if(aristasV.get(c)!=aristasV2.get(c))
 					return false;
