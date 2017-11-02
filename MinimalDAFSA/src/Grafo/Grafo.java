@@ -10,7 +10,6 @@ public class Grafo {
 	public Grafo(){
 		raiz=new Vertice();
 		pil=new Pila<Vertice>();
-
 	}
 	public void addPalabra(String palabra){
 		Vertice aux=raiz;
@@ -22,53 +21,50 @@ public class Grafo {
 			i++;
 		}
 		if(i<n){
-		
-		String pal=palabra.substring(i);
-		completarPalabra(aux,pal);		
-		
+			String pal=palabra.substring(i);
+			aux=completarPalabra(aux,pal);
 		}
-		
 		aux.setEstadoFinal(true);
 		pil.adicPila(aux);
 	}       
 
 	//Crea un serie de Nodos para completar la palabra
-	public void completarPalabra(Vertice aux,String pal){	    
+	public Vertice completarPalabra(Vertice aux,String pal){	    
 		char array[]=pal.toCharArray();
 		Vertice sig;
-		
+
 		for(int i=0;i<array.length;i++){
 			sig=new Vertice();
 			aux.addArista(array[i],sig);
 			aux=sig;
 		}
-						
+       return aux;
 	}
 	public  void mostrar(){
 		ArrayList<String>dic=new ArrayList<String>();
-		mostrar(dic,"",raiz);
+		dic=mostrar(dic,"",raiz);
 		for(String a:dic)
 			System.out.println(a);
 	}
-	public void mostrar(ArrayList<String>a,String pal,Vertice aux){
-		if(aux.estadoFinal)
+	public ArrayList<String> mostrar(ArrayList<String>a,String pal,Vertice aux){
+	       
+		if(aux.isEstadoFinal())
 			a.add(pal);
 		for(char c:aux.getAristas().keySet())
-			mostrar(a,pal+c,aux.getAristas().get(c));
-
+			a=mostrar(a,pal+c,aux.getAristas().get(c));
+        return a;
 
 	}
 	public static void main(String []args){
 
 		Grafo a=new Grafo();
-		a.addPalabra("abbba");
-	     a.addPalabra("abcas");
-	     a.addPalabra("aas");
-	     a.addPalabra("bbba");
-	    a.mostrar();
-	     System.out.println(Vertice.val);
-	
+		a.addPalabra("aaa");
+		a.addPalabra("a");
+		a.mostrar();
 		
+		
+
+
 
 	}
 
