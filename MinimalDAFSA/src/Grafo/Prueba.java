@@ -9,18 +9,38 @@ public static void main(String[] args) {
 	
 	
 	Diccionario a=new Diccionario();
-	Vertice fin=a.addWord("bijecie");
+	/*Vertice fin=a.addWord("bijecia");
 	Stack<Vertice>x=new Stack<Vertice>();
 	x=a.buildStack(fin, x);
     a.minim(x);
-   
-   Vertice c= a.addWord("bij");
+   System.out.println("id "+Vertice.idVertice);
+   Vertice c= a.addWord("bijka");
    Stack<Vertice>x2=new Stack<Vertice>();
    x2=a.buildStack(c, x2);
    //System.out.println(x2.get(3));
    //System.out.println(a.pilaR);
-   a.minim(x2);
-   System.out.println(a.pilaR.get(4));
+  */
+   //Stack<Vertice>x3=new Stack<Vertice>();
+   //x3=a.buildStack(a.raiz, x3); 
+   //a.minim(x2);
+   //a.minim(x3);
+   
+	a.addPalabra("bijecie");
+	a.addPalabra("bijemy");
+	a.addPalabra("bijcie");
+	a.addPalabra("bijmy");
+	
+	Stack<Vertice>x4=new Stack<Vertice>();
+	   x4=a.buildStack(a.raiz, x4); 
+	   a.minim(x4);
+	
+//   for(int i=7;i>=0;i--)
+	//   System.out.println(a.pilaR.get(i));
+   
+	   a.vertices();
+   System.out.println(Vertice.idVertice+" Registro "+a.pilaR.size());
+   
+   
     /*
 	Stack<Vertice>x2=new Stack<Vertice>();
      Vertice fin2=a.addWord("bijg");  
