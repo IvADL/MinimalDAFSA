@@ -20,7 +20,7 @@ public class Diccionario {
         minim(pilX);
 		
 	}
-	private Vertice addWord(String word){
+	public Vertice addWord(String word){
 		
 		Vertice aux=raiz;
 		char[] array=word.toCharArray();
@@ -69,7 +69,7 @@ public class Diccionario {
     		   for(Vertice it:aristas.keySet()){
     			   //Redirecciono el apunte a el nodoEquivalente verEq
     			   for(char c:aristas.get(it)){
-    				   it.getAristas().replace(c,verEq);
+    				   it.getAristas().put(c,verEq);//En otras versiones java se usa replace en vez de put
     			   }
     		   }
     		}

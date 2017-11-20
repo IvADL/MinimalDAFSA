@@ -10,7 +10,6 @@ public class Vertice {
 	private int id;
 
 	private HashMap<Character,Vertice> aristasV;
-	
 	public  HashMap<Vertice,ArrayList<Character>> aristasAnt;
 
 	public Vertice(){

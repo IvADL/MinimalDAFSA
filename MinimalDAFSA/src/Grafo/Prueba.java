@@ -24,16 +24,23 @@ public static void main(String[] args) {
    //x3=a.buildStack(a.raiz, x3); 
    //a.minim(x2);
    //a.minim(x3);
-   
-	a.addPalabra("bijecie");
-	a.addPalabra("bijemy");
-	a.addPalabra("bijcie");
+
+//	a.addPalabra("bijecie");
+//	a.addPalabra("bijemy");
+	
+	a.addPalabra("abcde");
+	a.addPalabra("acdf");
+	Stack<Vertice>x3=new Stack<Vertice>();
+	   x3=a.buildStack(a.raiz, x3); 
+	   //a.minim(x2);
+	   a.minim(x3);
+	/*a.addPalabra("bijcie");
 	a.addPalabra("bijmy");
 	
 	Stack<Vertice>x4=new Stack<Vertice>();
 	   x4=a.buildStack(a.raiz, x4); 
 	   a.minim(x4);
-	
+	//*/
 //   for(int i=7;i>=0;i--)
 	//   System.out.println(a.pilaR.get(i));
    
